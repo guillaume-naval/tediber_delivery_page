@@ -1,6 +1,14 @@
 <template>
   <div id="app">
     <AppHeader />
+    <section id="order-tracking">
+      <div class="section_title">
+        <h1>SUIVI DE COMMANDE</h1>
+        <img src="./assets/zigzag.svg" alt="zigzag" />
+      </div>
+    </section>
+    <section id="shipping"></section>
+    <section id="billing"></section>
   </div>
 </template>
 
@@ -16,12 +24,18 @@ export default {
 </script>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Lato", sans-serif;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+  list-style: none;
+}
+h1 {
+  letter-spacing: 3px;
+  font-size: 22px;
 }
 </style>
