@@ -4,9 +4,9 @@
     :class="{ close: isBurgerActive }"
     @click="toggle()"
   >
-    <span class="line line01"></span>
-    <span class="line line02"></span>
-    <span class="line line03"></span>
+    <span class="burger-line line01"></span>
+    <span class="burger-line line02"></span>
+    <span class="burger-line line03"></span>
   </div>
 </template>
 
@@ -35,7 +35,7 @@ export default {
   position: relative;
   cursor: pointer;
 }
-.line {
+.burger-line {
   position: absolute;
   height: 2px;
   width: 100%;
