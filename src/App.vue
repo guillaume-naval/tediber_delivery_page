@@ -20,16 +20,16 @@
               Date d'expédition :
               <span class="bold">{{ order.shippingInfo.date }}</span>
             </p>
-            <hr />
+            <div class="blueline"></div>
             <div class="drawer">
               <p class="light">Suivi commande</p>
-              <img :src="arrow" alt="arrow" @click="openDrawer" />
+              <img :src="arrowDrawer" alt="arrow" @click="openDrawer" />
             </div>
             <!-- ETAPES DU SUIVI -->
             <transition name="slide-fade2">
               <div class="tracking" v-show="isHidden">
                 <span class="tracking_steps">
-                  <img src="./assets/Group.svg" alt="box" />
+                  <img src="./assets/packing.svg" alt="box" />
                   <span class="checkbox">
                     <img
                       class="boxonly"
@@ -47,7 +47,7 @@
                   class="arrow_side"
                 />
                 <span class="tracking_steps">
-                  <img src="./assets/Group2.svg" alt="box in truck" />
+                  <img src="./assets/shipping.svg" alt="box in truck" />
                   <span class="checkbox">
                     <img
                       class="boxonly"
@@ -67,7 +67,7 @@
                 />
 
                 <span class="tracking_steps">
-                  <img src="./assets/Group3.svg" alt="truck" />
+                  <img src="./assets/intransit.svg" alt="truck" />
                   <span class="checkbox">
                     <img
                       class="boxonly"
@@ -86,7 +86,7 @@
                   class="arrow_side"
                 />
                 <span class="tracking_steps">
-                  <img src="./assets/Group4.svg" alt="box at door" />
+                  <img src="./assets/delivered.svg" alt="box at door" />
                   <span class="checkbox">
                     <img
                       class="boxonly"
@@ -101,13 +101,12 @@
                 </span>
               </div>
             </transition>
-            <hr />
+            <div class="blueline"></div>
             <div class="drawer">
               <p class="light">Informations sur les retours</p>
               <img :src="arrow" alt="arrow" />
             </div>
-
-            <hr />
+            <div class="blueline"></div>
           </div>
           <!-- LES ARTICLES -->
           <div class="products">
@@ -207,7 +206,7 @@
             <p class="light" v-else>{{ order.shippingPrice }}</p>
           </div>
           <div class="total bold">
-            <p>TOTAL</p>
+            <p>TOTAL :</p>
             <p>
               {{ productsTotalPrice(order.products) + order.shippingPrice }}
             </p>
@@ -220,27 +219,27 @@
           <h1><span>BESOIN D'AIDE ?</span></h1>
           <img src="./assets/zigzag.svg" alt="zigzag" />
         </div>
-        <hr />
+        <div class="blueline"></div>
         <div class="drawer">
           <p class="light">FOIRE AUX QUESTIONS TEDIBER</p>
           <img :src="arrow" alt="arrow" />
         </div>
-        <hr />
+        <div class="blueline"></div>
         <div class="drawer">
           <p class="light">LA GARANTIE TEDIBER</p>
           <img :src="arrow" alt="arrow" />
         </div>
-        <hr />
+        <div class="blueline"></div>
         <div class="drawer">
           <p class="light">REPRISE DE L'ANCIENNE LITERIE</p>
           <img :src="arrow" alt="arrow" />
         </div>
-        <hr />
+        <div class="blueline"></div>
         <div class="drawer">
           <p class="light">COMMENT FAIRE UN RETOUR ?</p>
           <img :src="arrow" alt="arrow" />
         </div>
-        <hr />
+        <div class="blueline"></div>
       </section>
     </div>
   </div>
@@ -257,6 +256,7 @@ export default {
   data() {
     return {
       order: null,
+      arrowDrawer: require("./assets/arrow_down.svg"),
       arrow: require("./assets/arrow_down.svg"),
       isHidden: false,
     };
@@ -296,9 +296,9 @@ export default {
     openDrawer() {
       this.isHidden = !this.isHidden;
       if (!this.isHidden) {
-        this.arrow = require("./assets/arrow_down.svg");
+        this.arrowDrawer = require("./assets/arrow_down.svg");
       } else {
-        this.arrow = require("./assets/arrow_up.svg");
+        this.arrowDrawer = require("./assets/arrow_up.svg");
       }
     },
     productsTotalQuantity(products) {
@@ -519,12 +519,9 @@ h3 {
   border-bottom: 2px solid rgba(0, 0, 0, 0.089);
   margin: 14px 0px;
 }
-hr {
-  border: 0;
+.blueline {
   margin: 10px 0px;
-  width: 100%;
-  height: 1px;
-  background: #202447;
+  border-bottom: 1px solid #202447;
 }
 .shipping {
   .delivery {
@@ -550,6 +547,12 @@ hr {
   justify-content: space-between;
   align-items: center;
   height: 28px;
+  @media screen and (min-width: 768px) {
+    margin: 0 200px;
+  }
+  @media screen and (min-width: 1200px) {
+    margin: 0 400px;
+  }
 }
 .help {
   margin-bottom: 60px;

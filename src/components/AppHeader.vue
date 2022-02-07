@@ -8,7 +8,7 @@
       <SliderMenu v-show="menuActive"></SliderMenu>
     </transition>
 
-    <img src="../assets/logo_tediber.svg" alt="tediber logo" />
+    <img class="tediber" src="../assets/logo_tediber.svg" alt="tediber logo" />
     <div class="desktop_nav">
       <div class="side_nav">
         <a href="#"
@@ -32,7 +32,7 @@
         <a href="#">CONTACTEZ-NOUS</a>
       </div>
     </div>
-    <img src="../assets/cart.svg" alt="tediber logo" />
+    <img class="cart" src="../assets/cart.svg" alt="cart" />
   </div>
 </template>
 
@@ -91,6 +91,10 @@ export default {
     display: none;
   }
   @media screen and (min-width: 1200px) {
+    .cart,
+    .tediber {
+      height: 50px;
+    }
     height: 80px;
     flex-grow: 2;
     .desktop_nav {
