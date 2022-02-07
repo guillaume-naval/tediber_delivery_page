@@ -5,7 +5,9 @@
     <div class="wrapper">
       <section class="order-tracking" v-if="order">
         <div class="section_title">
-          <h1><span>SUIVI DE COMMANDE</span></h1>
+          <span class="line_wrap">
+            <h1>SUIVI DE COMMANDE</h1>
+          </span>
           <img src="./assets/zigzag.svg" alt="zigzag" />
         </div>
         <div class="order_status">
@@ -136,7 +138,9 @@
       <!-- INFORMATIONS SUR LA LIVRAISON -->
       <section class="shipping" v-if="order">
         <div class="section_title">
-          <h1><span>INFORMATIONS SUR LA LIVRAISON</span></h1>
+          <span class="line_wrap">
+            <h1>INFORMATIONS SUR LA LIVRAISON</h1>
+          </span>
           <img src="./assets/zigzag.svg" alt="zigzag" />
         </div>
         <div class="card_info shadow delivery">
@@ -175,7 +179,9 @@
       <!-- INFORMATIONS DE PAIEMENT -->
       <section class="billing" v-if="order">
         <div class="section_title">
-          <h1><span>INFORMATIONS DE PAIEMENT</span></h1>
+          <span class="line_wrap">
+            <h1>INFORMATIONS DE PAIEMENT</h1>
+          </span>
           <img src="./assets/zigzag.svg" alt="zigzag" />
         </div>
         <div class="card_info shadow">
@@ -192,7 +198,9 @@
       <!-- TOTAL COMMANDE -->
       <section class="order_total" v-if="order">
         <div class="section_title">
-          <h1><span>TOTAL COMMANDE</span></h1>
+          <span class="line_wrap">
+            <h1>TOTAL COMMANDE</h1>
+          </span>
           <img src="./assets/zigzag.svg" alt="zigzag" />
         </div>
         <div class="card_info shadow">
@@ -216,7 +224,7 @@
       <!-- BESOIN D'AIDE -->
       <section class="help">
         <div class="section_title">
-          <h1><span>BESOIN D'AIDE ?</span></h1>
+          <span class="line_wrap"><h1>BESOIN D'AIDE ?</h1></span>
           <img src="./assets/zigzag.svg" alt="zigzag" />
         </div>
         <div class="blueline"></div>
@@ -358,25 +366,36 @@ a:hover {
 .maj {
   text-transform: uppercase;
 }
+.section_title {
+  margin: 40px 0 20px 0;
+}
+.line_wrap {
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  font-size: 28px;
+  position: relative;
+}
+.line_wrap:after {
+  content: "";
+  width: 100%;
+  border-bottom: solid 1px #202447;
+  position: absolute;
+  left: 0;
+  top: 40%;
+  z-index: 1;
+}
 h1 {
   letter-spacing: 3px;
   font-size: 22px;
-  display: flex;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  margin: 40px 0 20px 0;
-  span {
-    text-align: center;
-  }
-}
-h1:after,
-h1:before {
-  content: "";
-  width: 20%;
-  height: 2px;
-  background: black;
-  margin: 1%;
+  text-align: center;
+  background-color: white;
+  width: auto;
+  display: inline-block;
+  z-index: 3;
+  padding: 0 20px 0 20px;
+  position: relative;
+  margin: 0;
 }
 h3 {
   margin-left: 1em;
@@ -455,6 +474,9 @@ h3 {
     @media screen and (min-width: 1200px) {
       height: 60px;
     }
+    @media screen and (max-width: 370px) {
+      height: 30px;
+    }
   }
   .arrow_side {
     width: 30px;
@@ -495,7 +517,6 @@ h3 {
     }
     &_text {
       display: flex;
-
       flex-direction: column;
       justify-content: space-between;
       line-height: 1;
