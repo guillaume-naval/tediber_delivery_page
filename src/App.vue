@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <AppHeader />
+    <!-- BLOC SUIVI DE COMMANDE -->
     <section id="order-tracking" v-if="order">
       <div class="section_title">
         <h1><span>SUIVI DE COMMANDE</span></h1>
@@ -8,13 +9,13 @@
       </div>
       <div class="order_status">
         <div class="order_details">
-          <p class="light">
+          <p class="details light">
             N° de commande : <span class="bold">{{ order.id }}</span>
           </p>
-          <p class="light">
+          <p class="details light">
             Date de commande : <span class="bold">{{ order.orderDate }}</span>
           </p>
-          <p class="light">
+          <p class="details light">
             Date d'expédition :
             <span class="bold">{{ order.shippingInfo.date }}</span>
           </p>
@@ -23,6 +24,7 @@
             <p class="light">Suivi commande</p>
             <img :src="url" alt="arrow" @click="openDrawer" />
           </div>
+          <!-- ETAPES DU SUIVI -->
           <transition name="slide-fade2">
             <div class="tracking" v-show="isHidden">
               <span class="tracking_steps">
@@ -79,29 +81,32 @@
 
           <hr />
         </div>
-
-        <p class="article light">
-          ARTICLES ({{ productsTotalQuantity(order.products) }})
-        </p>
-        <div
-          class="products"
-          v-for="product in order.products"
-          :key="product.id"
-        >
-          <div class="product_card shadow">
-            <img :src="product.url" alt="image produit" />
-            <div class="product_card_text">
-              <p class="bold">{{ product.name }}</p>
-              <p class="bold">{{ product.price }} €</p>
-              <p class="light">
-                TAILLE: {{ product.size }}<br />
-                QTÉ: {{ product.quantity }}
-              </p>
+        <!-- LES ARTICLES -->
+        <div id="products">
+          <p class="article light">
+            ARTICLES ({{ productsTotalQuantity(order.products) }})
+          </p>
+          <div
+            class="products_list"
+            v-for="product in order.products"
+            :key="product.id"
+          >
+            <div class="products_card shadow">
+              <img :src="product.url" alt="image produit" />
+              <div class="products_card_text">
+                <p class="bold">{{ product.name }}</p>
+                <p class="bold">{{ product.price }} €</p>
+                <p class="light">
+                  TAILLE: {{ product.size }}<br />
+                  QTÉ: {{ product.quantity }}
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
+    <!-- INFORMATIONS SUR LA LIVRAISON -->
     <section id="shipping" v-if="order">
       <div class="section_title">
         <h1><span>INFORMATIONS SUR LA LIVRAISON</span></h1>
@@ -135,6 +140,7 @@
         </p>
       </div>
     </section>
+    <!-- INFORMATIONS DE PAIEMENT -->
     <section id="billing" v-if="order">
       <div class="section_title">
         <h1><span>INFORMATIONS DE PAIEMENT</span></h1>
@@ -151,6 +157,7 @@
         </div>
       </div>
     </section>
+    <!-- TOTAL COMMANDE -->
     <section id="total" v-if="order">
       <div class="section_title">
         <h1><span>TOTAL COMMANDE</span></h1>
@@ -172,11 +179,33 @@
         </div>
       </div>
     </section>
-    <section id="total" v-if="order">
+    <!-- BESOIN D'AIDE -->
+    <section id="help">
       <div class="section_title">
         <h1><span>BESOIN D'AIDE ?</span></h1>
         <img src="./assets/zigzag.svg" alt="zigzag" />
       </div>
+      <hr />
+      <div class="drawer">
+        <p class="light">FOIRE AUX QUESTIONS TEDIBER</p>
+        <img :src="url" alt="arrow" />
+      </div>
+      <hr />
+      <div class="drawer">
+        <p class="light">LA GARANTIE TEDIBER</p>
+        <img :src="url" alt="arrow" />
+      </div>
+      <hr />
+      <div class="drawer">
+        <p class="light">REPRISE DE L'ANCIENNE LITERIE</p>
+        <img :src="url" alt="arrow" />
+      </div>
+      <hr />
+      <div class="drawer">
+        <p class="light">COMMENT FAIRE UN RETOUR ?</p>
+        <img :src="url" alt="arrow" />
+      </div>
+      <hr />
     </section>
   </div>
 </template>
@@ -335,7 +364,7 @@ h3 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 .shadow {
   box-shadow: 0px 3px 9px rgba(0, 0, 0, 0.296);
@@ -382,11 +411,15 @@ h3 {
   p {
     font-size: 16px;
   }
+  .details {
+    margin-bottom: 15px;
+  }
 }
 
 .tracking {
   display: flex;
   align-items: center;
+  justify-content: center;
   max-width: 50;
   flex-wrap: wrap;
   margin: 20px 0;
@@ -410,9 +443,10 @@ h3 {
   }
 }
 .products {
-  padding: 9.5px 0;
-
-  .product_card {
+  &_list {
+    padding: 9.5px 0;
+  }
+  &_card {
     display: flex;
     padding: 11px;
     height: 131px;
@@ -465,5 +499,11 @@ hr {
   justify-content: space-between;
   align-items: center;
   height: 28px;
+}
+#help {
+  margin-bottom: 60px;
+  .drawer {
+    margin: 0 15px 0 33px;
+  }
 }
 </style>
