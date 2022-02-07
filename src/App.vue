@@ -36,6 +36,7 @@
                       src="./assets/unchecked.svg"
                       alt="box" />
                     <img
+                      :class="{ taskNotDone: !order.packing }"
                       class="check"
                       src="./assets/checked.svg"
                       alt="check" /></span
@@ -52,7 +53,11 @@
                       class="boxonly"
                       src="./assets/unchecked.svg"
                       alt="box" />
-                    <img class="check" src="./assets/checked.svg" alt="check"
+                    <img
+                      :class="{ taskNotDone: !order.shipping }"
+                      class="check"
+                      src="./assets/checked.svg"
+                      alt="check"
                   /></span>
                 </span>
                 <img
@@ -68,7 +73,11 @@
                       class="boxonly"
                       src="./assets/unchecked.svg"
                       alt="box" />
-                    <img class="check" src="./assets/checked.svg" alt="check"
+                    <img
+                      :class="{ taskNotDone: !order.intransit }"
+                      class="check"
+                      src="./assets/checked.svg"
+                      alt="check"
                   /></span>
                 </span>
                 <img
@@ -83,7 +92,11 @@
                       class="boxonly"
                       src="./assets/unchecked.svg"
                       alt="box" />
-                    <img class="check" src="./assets/checked.svg" alt="check"
+                    <img
+                      :class="{ taskNotDone: !order.delivered }"
+                      class="check"
+                      src="./assets/checked.svg"
+                      alt="check"
                   /></span>
                 </span>
               </div>
@@ -134,6 +147,7 @@
             <p class="light">{{ order.shippingInfo.road }}</p>
             <p class="light">{{ order.shippingInfo.city }}</p>
             <p class="light">{{ order.shippingInfo.zipcode }}</p>
+            <p class="light">{{ order.shippingInfo.country }}</p>
           </div>
           <div class="grey"></div>
           <div class="delivery_info">
@@ -249,6 +263,14 @@ export default {
   },
   created() {
     this.fetchData();
+  },
+  computed: {
+    checkTask: function () {
+      return {
+        active: this.isActive && !this.error,
+        "text-danger": this.error && this.error.type === "fatal",
+      };
+    },
   },
   methods: {
     fetchData() {
@@ -448,6 +470,9 @@ h3 {
       justify-content: center;
       .check {
         width: 18px;
+      }
+      .taskNotDone {
+        opacity: 0;
       }
       .boxonly {
         position: absolute;
