@@ -1,9 +1,5 @@
 <template>
-  <div
-    class="main-item menu"
-    :class="{ close: isBurgerActive }"
-    @click="toggle()"
-  >
+  <div class="burger" :class="{ close: isBurgerActive }" @click="toggle()">
     <span class="burger-line line01"></span>
     <span class="burger-line line02"></span>
     <span class="burger-line line03"></span>
@@ -28,12 +24,16 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-.main-item {
+.burger {
   display: flex;
   width: 26px;
   height: 30px;
   position: relative;
   cursor: pointer;
+
+  @media screen and (min-width: 1200px) {
+    display: none;
+  }
 }
 .burger-line {
   position: absolute;
@@ -51,12 +51,12 @@ export default {
 .line03 {
   top: 79%;
 }
-.menu.close .line01 {
+.burger.close .line01 {
   transform: rotate(45deg);
   top: 49%;
 }
-.menu.close .line02,
-.menu.close .line03 {
+.burger.close .line02,
+.burger.close .line03 {
   transform: rotate(-45deg);
   top: 49%;
 }
