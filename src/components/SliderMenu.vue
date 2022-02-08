@@ -2,17 +2,11 @@
   <div id="menuDrawer">
     <ul>
       <a href="#">NOS PRODUITS</a>
-      <hr />
       <a href="#">LE CONCEPT</a>
-      <hr />
       <a href="#">AVIS</a>
-      <hr />
       <a href="#">PUB TV</a>
-      <hr />
       <a href="#">MON COMPTE</a>
-      <hr />
       <a href="#">MAG</a>
-      <hr />
       <a href="#">CONTACTEZ-NOUS</a>
     </ul>
   </div>
@@ -36,18 +30,17 @@ export default {
   background: rgb(240, 240, 240);
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.13);
   top: 55px;
-  z-index: 1;
+  z-index: 4;
   width: 100%;
-  padding-bottom: 12px;
-  hr {
-    background: rgba(29, 29, 29, 0.13);
-  }
+
   ul {
-    margin-top: 1em;
     display: flex;
     flex-direction: column;
     a {
-      margin: 1em;
+      padding: 20px;
+    }
+    a:hover {
+      background-color: rgba(214, 214, 214, 0.308);
     }
   }
   @media screen and (min-width: 1200px) {

@@ -6,9 +6,9 @@
       <section class="order-tracking" v-if="order">
         <div class="section_title">
           <span class="line_wrap">
-            <h1>SUIVI DE COMMANDE</h1>
+            <h1 class="tracking_title">SUIVI DE COMMANDE</h1>
           </span>
-          <img src="./assets/zigzag.svg" alt="zigzag" />
+          <img class="zigzag" src="./assets/zigzag.svg" alt="zigzag" />
         </div>
         <div class="order_status">
           <div class="order_details">
@@ -141,7 +141,7 @@
           <span class="line_wrap">
             <h1>INFORMATIONS SUR LA LIVRAISON</h1>
           </span>
-          <img src="./assets/zigzag.svg" alt="zigzag" />
+          <img class="zigzag" src="./assets/zigzag.svg" alt="zigzag" />
         </div>
         <div class="card_info shadow delivery">
           <div class="delivery_info">
@@ -182,7 +182,7 @@
           <span class="line_wrap">
             <h1>INFORMATIONS DE PAIEMENT</h1>
           </span>
-          <img src="./assets/zigzag.svg" alt="zigzag" />
+          <img class="zigzag" src="./assets/zigzag.svg" alt="zigzag" />
         </div>
         <div class="card_info shadow">
           <div class="payement" v-if="order.user.payement === 'MASTERCARD'">
@@ -201,11 +201,11 @@
           <span class="line_wrap">
             <h1>TOTAL COMMANDE</h1>
           </span>
-          <img src="./assets/zigzag.svg" alt="zigzag" />
+          <img class="zigzag" src="./assets/zigzag.svg" alt="zigzag" />
         </div>
         <div class="card_info shadow">
           <div class="total">
-            <p class="light">Sous-totale</p>
+            <p class="light">Sous-total</p>
             <p class="light">{{ productsTotalPrice(order.products) }}</p>
           </div>
           <div class="total">
@@ -225,7 +225,7 @@
       <section class="help">
         <div class="section_title">
           <span class="line_wrap"><h1>BESOIN D'AIDE ?</h1></span>
-          <img src="./assets/zigzag.svg" alt="zigzag" />
+          <img class="zigzag" src="./assets/zigzag.svg" alt="zigzag" />
         </div>
         <div class="blueline"></div>
         <div class="drawer">
@@ -366,47 +366,6 @@ a:hover {
 .maj {
   text-transform: uppercase;
 }
-.section_title {
-  margin: 40px 0 20px 0;
-}
-.line_wrap {
-  width: 100%;
-  height: 50px;
-  text-align: center;
-  font-size: 28px;
-  position: relative;
-}
-.line_wrap:after {
-  content: "";
-  width: 100%;
-  border-bottom: solid 1px #202447;
-  position: absolute;
-  left: 0;
-  top: 40%;
-  z-index: 1;
-}
-h1 {
-  letter-spacing: 3px;
-  font-size: 22px;
-  text-align: center;
-  background-color: white;
-  width: auto;
-  display: inline-block;
-  z-index: 3;
-  padding: 0 20px 0 20px;
-  position: relative;
-  margin: 0;
-}
-h3 {
-  margin-left: 1em;
-}
-.section_title {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 30px;
-}
 .shadow {
   box-shadow: 0px 3px 9px rgba(0, 0, 0, 0.296);
 }
@@ -429,10 +388,64 @@ h3 {
     padding: 0 80px;
   }
 }
+/* TITLE + LINE */
+.section_title {
+  margin: 40px 0 20px 0;
+}
+.line_wrap {
+  width: 100%;
+  text-align: center;
+  font-size: 28px;
+  position: relative;
+}
+.zigzag {
+  margin-top: 15px;
+}
+.line_wrap:after {
+  content: "";
+  width: 100%;
+  border-bottom: solid 1px #202447;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  z-index: 1;
+}
+h1 {
+  letter-spacing: 3px;
+  font-size: 22px;
+  text-align: center;
+  background-color: white;
+  width: auto;
+  display: inline-block;
+  z-index: 3;
+  padding: 0 20px;
+  position: relative;
+  margin: 0;
+  @media screen and(max-width: 465px) {
+    width: 280px;
+    padding: 0 15px;
+  }
+}
+.tracking_title {
+  @media screen and(max-width: 465px) {
+    width: auto;
+  }
+}
+h3 {
+  margin-left: 1em;
+}
+.section_title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
 /* ANIMATIONS */
 
 .slide-fade2-enter-active {
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
 }
 .slide-fade2-leave-active {
   transition: all 0.2s ease;
