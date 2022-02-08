@@ -385,7 +385,8 @@ a:hover {
 }
 .wrapper {
   @media screen and (min-width: 1200px) {
-    padding: 0 80px;
+    width: 1042px;
+    margin: auto;
   }
 }
 /* TITLE + LINE */
