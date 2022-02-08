@@ -55,7 +55,7 @@ export default {
 <style scoped lang="scss">
 /* ANIMATIONS */
 .slide-fade-enter-active {
-  transition: all 0.5s ease;
+  transition: all 0.3s ease;
 }
 .slide-fade-leave-active {
   transition: all 0.3s ease;

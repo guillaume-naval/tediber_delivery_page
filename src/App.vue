@@ -421,13 +421,14 @@ h1 {
   padding: 0 20px;
   position: relative;
   margin: 0;
-  @media screen and(max-width: 465px) {
+  @media screen and(max-width: 550px) {
     width: 280px;
     padding: 0 15px;
+    line-height: 1;
   }
 }
 .tracking_title {
-  @media screen and(max-width: 465px) {
+  @media screen and(max-width: 550px) {
     width: auto;
   }
 }

@@ -27,7 +27,7 @@ export default {
 .burger {
   display: flex;
   width: 26px;
-  height: 30px;
+  height: 32px;
   position: relative;
   cursor: pointer;
 
