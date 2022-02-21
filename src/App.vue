@@ -23,9 +23,9 @@
               <span class="bold">{{ order.shippingInfo.date }}</span>
             </p>
             <div class="blueline"></div>
-            <div class="drawer">
+            <div class="drawer" @click="openDrawer">
               <p class="light">Suivi commande</p>
-              <img :src="arrowDrawer" alt="arrow" @click="openDrawer" />
+              <img :src="arrowDrawer" alt="arrow" />
             </div>
             <!-- ETAPES DU SUIVI -->
             <transition name="slide-fade2">
